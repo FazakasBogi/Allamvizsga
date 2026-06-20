@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Körforgásos gazdaság az elektronikai iparban</title>
+    <meta
+      name="description"
+      content="Adatvizualizációs oldal a körforgásos gazdaság, az e-hulladék és a fogyasztói magatartás elemzéséhez."
+    />
+    <link rel="stylesheet" href="styles.css?v=20260612-conclusion-3" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Kezdőlap">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Körforgásos elektronikai ipar</span>
+      </a>
+
+      <nav class="nav" aria-label="Fő navigáció">
+        <a href="#summary">Összefoglaló</a>
+        <a href="#literature">Szakirodalom</a>
+        <a href="#visualization-method">Módszertan</a>
+        <a href="#secondary-data">Másodlagos adatok</a>
+        <div class="nav-dropdown">
+          <a href="#primary-data" aria-haspopup="true">Elsődleges adatok</a>
+          <div class="nav-submenu" aria-label="Elsődleges adatok alfejezetei">
+            <a href="#primary-overview">Általános értékek</a>
+            <a href="#primary-profile-section">Fogyasztói profil</a>
+            <a href="#primary-consumption-section">Beszerzés és fogyasztás</a>
+            <a href="#primary-repair-section">Javítási döntések</a>
+            <a href="#primary-end-of-life-section">Életciklus vége</a>
+            <a href="#primary-clusters-section">Fogyasztói csoportok</a>
+          </div>
+        </div>
+        <a href="#conclusion-section">Következtetések</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-band" aria-labelledby="page-title">
+        <div class="hero-content">
+          <h1 id="page-title">
+            <span>Körforgásos gazdaság</span>
+            <span>az <em>elektronikai</em></span>
+            <span>iparban</span>
+          </h1>
+          <p class="lead">
+            A romániai és holland fogyasztói magatartás<br />
+            összehasonlító elemzése
+          </p>
+          <div class="hero-meta">
+            <span>Fazakas Boglárka · Gazdasági informatika</span>
+            <span>Témavezetők: Dr. Kovács Gyöngyvér és Dr. Csíki Ottó</span>
+          </div>
+          <a class="download-button" href="../Fazakas%20Bogl%C3%A1rka%20-%20szakdolgozat.docx" download>
+            Dolgozat letöltése
+          </a>
+        </div>
+
+        <div class="cycle-panel" aria-label="Forgó körforgásos gazdaság motívum">
+          <canvas id="cycleCanvas" width="900" height="620"></canvas>
+        </div>
+      </section>
+
+      <section id="summary" class="section-band" aria-labelledby="summary-title">
+        <div class="section-inner summary-layout">
+          <div class="section-heading compact">
+            <p class="kicker">Rövid összefoglaló</p>
+            <h2 id="summary-title">Az e-hulladék kezelése fogyasztói és rendszerszintű kérdés egyszerre</h2>
+          </div>
+
+          <div class="summary-text">
+            <p>
+              A lineáris gazdasági modell egyre nagyobb nyomást helyez a természeti erőforrásokra, miközben az
+              elektronikai eszközök gyors cseréje látványosan növeli az e-hulladék mennyiségét. A körforgásos
+              gazdaság erre kínál alternatívát: az anyagok körforgásban tartását, a termékek élettartamának
+              meghosszabbítását és a hulladékképződés megelőzését helyezi középpontba.
+            </p>
+            <p>
+              Az átállás sikere azonban nemcsak technológiai vagy szabályozási kérdés: a fogyasztók mindennapi
+              döntései is meghatározzák, hogy a körforgásos elvek mennyire valósulnak meg a gyakorlatban. Ezért a
+              dolgozat Románia és Hollandia összehasonlításán keresztül vizsgálja, hogyan kapcsolódik össze az
+              e-hulladék kezelése, az informáltság és a fogyasztói magatartás.
+            </p>
+            <ol class="research-questions" aria-label="A dolgozat fő kutatási kérdései">
+              <li>
+                Milyen <strong>globális kihívásokat</strong> jelent az elektromos és elektronikai berendezésekből
+                származó hulladék növekedése?
+              </li>
+              <li>
+                Milyen szerepet tölt be a körforgásos gazdaság az <strong>e-hulladék csökkentésében</strong>?
+              </li>
+              <li>
+                Hogyan befolyásolja a <strong>fogyasztói magatartás</strong> a körforgásos gazdaság hatékonyságát?
+              </li>
+              <li>
+                Hogyan jellemezhető <strong>Románia helyzete</strong> az e-hulladék kezelésében Hollandia
+                teljesítményéhez képest?
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section id="literature" class="section-band muted-band" aria-labelledby="literature-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="kicker">Szakirodalmi áttekintő</p>
+            <h2 id="literature-title">A körforgásos elektronikai gazdaság fogyasztói és intézményi feltételei</h2>
+          </div>
+
+          <div class="literature-grid">
+            <details>
+              <summary>
+                <span>1</span>
+                <div>
+                  <strong>Elektromos és elektronikus hulladék napjainkban</strong>
+                  <small>Az elektronikai hulladék napjainkra a világ leggyorsabban növekvő hulladékáramává vált.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>Az elektronikai eszközök gyors terjedése és rövidülő életciklusa következtében az e-hulladék mennyisége folyamatosan növekszik. A Global E-Waste Monitor szerint a világon 2022-ben már 62 millió tonna elektronikai hulladék keletkezett, amelyből csupán kis rész került megfelelő újrahasznosításra (Unitar, 2024). A keletkező hulladék jelentős része továbbra is elveszik a rendszerből vagy nem megfelelő módon kerül kezelésre. Ez nemcsak környezeti kockázatot jelent, hanem értékes nyersanyagok elvesztésével is jár. Az e-hulladék problémája ezért globális fenntarthatósági kihívássá vált.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <span>2</span>
+                <div>
+                  <strong>Az e-hulladék problémájára felmerülő potenciális megoldások</strong>
+                  <small>Az e-hulladék problémája nem oldható meg kizárólag újrahasznosítással.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>A szakirodalom több lehetséges megoldást azonosít, köztük a szabályozás fejlesztését, a hulladékgazdálkodási rendszerek korszerűsítését és az érintett szereplők együttműködésének erősítését (Hsu et al., 2024). Egyre több kutatás hangsúlyozza azonban, hogy a probléma gyökere a jelenlegi lineáris fogyasztási modellben keresendő. Emiatt a körforgásos gazdaság kiemelt figyelmet kap, mivel a hulladékkezelés helyett a hulladékképződés megelőzésére helyezi a hangsúlyt. A cél a termékek életciklusának meghosszabbítása és az anyagok körforgásban tartása (Singh et al., 2025).</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <span>3.1</span>
+                <div>
+                  <strong>A körforgásos gazdaság globális szinten</strong>
+                  <small>A körforgásos gazdaság globálisan ígéretes megoldás, de megvalósítása még akadályokba ütközik.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>A körforgásos gazdaság célja az elektronikai termékek élettartamának meghosszabbítása és a bennük található értékes nyersanyagok visszaforgatása a gazdaságba (Quinto et al., 2025). Bár egyre több ország integrálja a körforgásosság elveit nemzeti stratégiáiba, a gyakorlati megvalósítást továbbra is nehezítik a szabályozási különbségek, az informális hulladékkezelés és a gazdasági ösztönzők hiánya. A jelenlegi rendszerek még nagyrészt lineáris logikára épülnek. Ennek ellenére a körforgásos gazdaságot a szakirodalom az egyik legígéretesebb hosszú távú megoldásként tartja számon (Unitar, 2024).</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <span>3.2</span>
+                <div>
+                  <strong>A körforgásos gazdaság Európában</strong>
+                  <small>Az Európai Unió a körforgásos gazdaság egyik globális éllovasa, de a tagállami teljesítmény eltérő.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>Az EU 2020-as Körforgásos Gazdasági Cselekvési Terve a termékek teljes életciklusára kiterjedő megközelítést alkalmaz (European Commission, 2020). Kiemelt cél a tartósság, javíthatóság és újrahasznosíthatóság növelése, különösen az elektronikai termékek esetében. Bár az uniós szabályozás ambiciózus, a tagállamok teljesítménye jelentős eltéréseket mutat (Mazur-Wierzbicka, 2021). A fejlődés elsősorban az újrahasznosításban figyelhető meg, miközben a valódi körforgásosság még korlátozott mértékben valósul meg (Džajić Uršič et al., 2025).</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <span>3.3</span>
+                <div>
+                  <strong>A körforgásos gazdaság Romániában</strong>
+                  <small>Románia az Európai Unió egyik legkevésbé körforgásos gazdaságával rendelkezik.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>A körkörös anyagfelhasználási arány Romániában mindössze 1,3%, ami jelentősen elmarad az uniós átlagtól (Dobre-Baron et al., 2022). Az elektronikai hulladék begyűjtése és újrahasznosítása szintén alacsony szinten áll, miközben az elektronikai eszközök fogyasztása folyamatosan növekszik (Bostan, 2023). A problémát az infrastruktúra hiányosságai, a gyenge ösztönzők és a korlátozott fogyasztói részvétel egyaránt erősítik. Bár Románia az utóbbi években több stratégiai dokumentumot is elfogadott, a gyakorlati előrelépés továbbra is lassú.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <span>4</span>
+                <div>
+                  <strong>A fogyasztók szerepe az e-hulladék megfelelő kezelésében</strong>
+                  <small>A körforgásos gazdaság sikere nagymértékben a fogyasztók döntésein múlik.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>A fogyasztók nemcsak az elektronikai eszközök vásárlásával, hanem használatával, javításával és leadásával is befolyásolják az e-hulladék mennyiségét (Gurauskienė, 2008). A kutatások szerint a tudás, a motiváció és a gyakorlati lehetőségek egyaránt meghatározzák a környezetbarát viselkedést (Tiippana-Usvasalo et al., 2023; Ylä-Mella et al., 2019). Az információhiány, a kényelmi szempontok és az észlelt kockázatok gyakran akadályozzák a fenntartható döntéseket. A fogyasztói magatartás ezért kulcsszerepet játszik a körforgásos gazdaság megvalósításában.</p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <span>5</span>
+                <div>
+                  <strong>Összehasonlítás a legjobbal: Hollandia, az e-hulladékok kezelésének éllovasa</strong>
+                  <small>Hollandia az egyik legsikeresebb európai példa a körforgásos gazdaság gyakorlati megvalósítására.</small>
+                </div>
+              </summary>
+              <div class="literature-detail">
+                <p>Hollandia 2023-ban több mint 30%-os körkörös anyagfelhasználási aránnyal az Európai Unió élvonalába tartozott (Eurostat, 2024). Az ország fejlett e-hulladék-kezelési rendszere a gyártók, önkormányzatok és hulladékgazdálkodási szereplők szoros együttműködésére épül (Golsteijn et al., 2017). A begyűjtött elektronikai hulladék jelentős része újrahasznosításra vagy energetikai hasznosításra kerül. A holland modell jól mutatja, hogy megfelelő infrastruktúrával és társadalmi részvétellel magas szintű körforgásosság érhető el.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="visualization-method" class="section-band" aria-labelledby="visualization-method-title">
+        <div class="section-inner dataviz-layout">
+          <div class="section-heading compact">
+            <p class="kicker">Módszertani keret</p>
+            <h2 id="visualization-method-title">Adatvizualizáció és kétféle adatforrás mint elemzési forma</h2>
+          </div>
+
+          <div class="dataviz-text">
+            <article class="method-card visual-card">
+              <span>Adatvizualizáció</span>
+              <h3>Mintázatok, eltérések és kapcsolatok láthatóvá tétele</h3>
+              <p>
+                Az adatvizualizáció ebben a dolgozatban nem illusztráció, hanem elemzési eszköz: segít gyorsan
+                felismerni, hol tér el a romániai és holland minta, mely változók mozognak együtt, és mely
+                termékkategóriáknál jelennek meg külön fogyasztói mintázatok.
+              </p>
+            </article>
+
+            <article class="method-card source-card-method">
+              <span>Kettős adatforrás</span>
+              <h3>Rendszerszintű háttér és fogyasztói döntés együtt</h3>
+              <p>
+                A két adattípus együtt használata azért fontos, mert a másodlagos adatok megmutatják az országos
+                rendszerszintű hátteret, az elsődleges kérdőíves adatok pedig azt, hogy ebben a környezetben hogyan
+                gondolkodnak és döntenek a fogyasztók. Így a dolgozat nem csak attitűdöket ír le, hanem azt is vizsgálja,
+                hogy ezek milyen intézményi és infrastrukturális feltételek között értelmezhetők.
+              </p>
+            </article>
+
+            <div class="data-type-links" aria-label="Adattípusok közötti navigáció">
+              <a href="#secondary-data">
+                <span>01</span>
+                <strong>Másodlagos adatok</strong>
+                <small>Eurostat és Eurobarometer háttér: országos trendek, WEEE mutatók és attitűdkontextus.</small>
+              </a>
+              <a href="#primary-data">
+                <span>02</span>
+                <strong>Elsődleges adatok</strong>
+                <small>Kérdőíves eredmények: javítás, vásárlás, újrahasználat és felelős leadási hajlandóság.</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="secondary-data" class="section-band muted-band" aria-labelledby="secondary-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="kicker">Másodlagos adatok</p>
+            <h2 id="secondary-title">Rendszerszintű háttér az országok összehasonlításához</h2>
+          </div>
+
+          <div class="secondary-summary-panel" aria-label="Másodlagos adatok általános következtetései">
+            <article>
+              <span>01</span>
+              <h3>A rendszer és az attitűd egyszerre számít</h3>
+              <p>A WEEE-adatok az országos hulladékkezelési teljesítményt mutatják, az Eurobarometer pedig azt, hogy a lakosság milyen környezeti problémákat és beavatkozási lehetőségeket tart fontosnak.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Románia és Hollandia eltérő kiindulópont</h3>
+              <p>Az összehasonlítás nem csak országok közti rangsor: azt is jelzi, hogy a primer kérdőíves válaszok különböző infrastrukturális és társadalmi háttérben értelmezhetők.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Az e-hulladék a körforgásos átmenet látható pontja</h3>
+              <p>Az elektronikai és akkumulátorhulladék az Eurobarometerben is megjelenő aggodalom, miközben a WEEE-mutatók megmutatják, mennyire képes a rendszer ezt kezelhető árammá alakítani.</p>
+            </article>
+          </div>
+
+          <div class="secondary-accordion">
+            <details>
+              <summary>Eurostat WEEE adatok</summary>
+              <div class="secondary-chart-grid">
+                <article class="primary-chart primary-chart-wide">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Halmozott oszlopdiagram</p>
+                      <h3>WEEE begyűjtött mennyiségek országonként és termékkategóriánként</h3>
+                    </div>
+                    <span>Eurostat CSV + mennyiségi halmozott oszlopdiagram</span>
+                  </div>
+                  <div id="weeeCategoryTrend" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="weeeCategoryTrendNote"></p>
+                </article>
+                <article class="primary-chart">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Újrahasznosítás</p>
+                      <h3>WEEE újrahasznosítási ráta alakulása</h3>
+                    </div>
+                    <span>Eurostat CSV + vonaldiagram</span>
+                  </div>
+                  <div id="weeeRecyclingTrend" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="weeeRecyclingTrendNote"></p>
+                </article>
+                <article class="primary-chart">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Rangsor</p>
+                      <h3>Újrahasznosítási ráta az utolsó romániai adatévben</h3>
+                    </div>
+                    <span>Eurostat rangsor + szűrés</span>
+                  </div>
+                  <div id="weeeRecyclingRanking" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="weeeRecyclingRankingNote"></p>
+                </article>
+              </div>
+            </details>
+            <details>
+              <summary>Eurobarometer attitűdök</summary>
+              <div class="secondary-chart-grid">
+                <article class="primary-chart primary-chart-wide">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Beágyazott kördiagram</p>
+                      <h3>QB1. Milyen mértékben ért egyet azzal, hogy a környezeti ügyek közvetlen hatással vannak a mindennapi életére és egészségére?</h3>
+                    </div>
+                    <span>Eurobarometer CSV + arc rétegek</span>
+                  </div>
+                  <div id="eurobarometerQb1NestedPie" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="eurobarometerQb1NestedPieNote"></p>
+                </article>
+
+                <article class="primary-chart primary-chart-wide">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Oszlopdiagram</p>
+                      <h3>QB2T. Ön szerint mely intézkedések lennének a leghatékonyabbak a környezeti problémák kezelésében?</h3>
+                    </div>
+                    <span>Eurobarometer CSV + grouped bar</span>
+                  </div>
+                  <div id="eurobarometerQb2Columns" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="eurobarometerQb2ColumnsNote"></p>
+                </article>
+
+                <article class="primary-chart">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Halmozott sáv</p>
+                      <h3>QB6. Mely lépéseket fontolná meg a hulladék mennyiségének csökkentésére?</h3>
+                    </div>
+                    <span>Többválaszos arány + stacked bar</span>
+                  </div>
+                  <div id="eurobarometerQb6Stacked" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="eurobarometerQb6StackedNote"></p>
+                </article>
+
+                <article class="primary-chart">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">Vonaldiagram</p>
+                      <h3>QB7T. Ön szerint mely hulladéktípusok jelentik a legnagyobb problémát az országában?</h3>
+                    </div>
+                    <span>Eurobarometer CSV + line chart</span>
+                  </div>
+                  <div id="eurobarometerQb7Dots" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="eurobarometerQb7DotsNote"></p>
+                </article>
+
+                <article class="primary-chart primary-chart-wide">
+                  <div class="chart-heading">
+                    <div>
+                      <p class="kicker">100%-os sávdiagram</p>
+                      <h3>QB8. Hajlandó lenne többet fizetni könnyebben javítható, újrahasznosítható vagy fenntartható módon gyártott termékekért?</h3>
+                    </div>
+                    <span>Megoszlás + normalized stack</span>
+                  </div>
+                  <div id="eurobarometerQb8Share" class="vega-chart primary-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="eurobarometerQb8ShareNote"></p>
+                </article>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="primary-data" class="section-band" aria-labelledby="primary-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="kicker">Elsődleges adatok</p>
+            <h2 id="primary-title">A fogyasztói döntések és a rendszerfeltételek találkozása</h2>
+          </div>
+
+          <div class="metric-grid" aria-label="Kutatás számokban">
+            <article class="metric-card">
+              <span class="metric-value" id="totalResponses">187</span>
+              <h3>kérdőíves válasz</h3>
+              <p>Primer kutatás a fogyasztói szokások és attitűdök feltárására.</p>
+            </article>
+            <article class="metric-card">
+              <span class="metric-value">2</span>
+              <h3>elemzési minta</h3>
+              <p>Romániai és holland válaszadói profilok összehasonlítása.</p>
+            </article>
+            <article class="metric-card">
+              <span class="metric-value">3</span>
+              <h3>termékkategória</h3>
+              <p>Nagy eszközök, személyes IT eszközök és kis eszközök külön vizsgálata.</p>
+            </article>
+          </div>
+
+          <div class="story-panel" aria-labelledby="story-title">
+            <div class="section-heading">
+              <p class="kicker">Elemzési ív</p>
+              <h2 id="story-title">A lineáris használattól a körforgásos döntésekig</h2>
+            </div>
+
+            <div class="timeline">
+              <article>
+                <span>01</span>
+                <h3>Attitűdök</h3>
+                <p>Környezeti aggodalom, normakövetés és edukáció iránti nyitottság.</p>
+              </article>
+              <article>
+                <span>02</span>
+                <h3>Beszerzés</h3>
+                <p>Új, használt és felújított elektronikai eszközök választása.</p>
+              </article>
+              <article>
+                <span>03</span>
+                <h3>Javítás</h3>
+                <p>Költség, hozzáférés, idő és adatbiztonság mint döntési akadályok.</p>
+              </article>
+              <article>
+                <span>04</span>
+                <h3>Leadás</h3>
+                <p>Begyűjtési pontok ismerete, kényelem és pénzügyi ösztönzők szerepe.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="product-category-panel" aria-label="A kérdőív termékkategóriái">
+            <div class="section-heading compact">
+              <p class="kicker">Termékkategóriák</p>
+              <h2>A kérdőív három eszközcsoportja</h2>
+            </div>
+            <div class="product-category-grid">
+              <article>
+                <span>01</span>
+                <h3>Nagy eszközök</h3>
+                <p>Háztartási és nagyobb elektronikai termékek, ahol a javítás költsége és a szervizelhetőség különösen fontos.</p>
+              </article>
+              <article>
+                <span>02</span>
+                <h3>Személyes IT eszközök</h3>
+                <p>Telefonok, laptopok és személyes digitális eszközök, ahol az adatbiztonság és a cseregyakoriság erősen megjelenik.</p>
+              </article>
+              <article>
+                <span>03</span>
+                <h3>Kis eszközök</h3>
+                <p>Kisebb elektronikai termékek, amelyeknél gyakran a javítás kényelme, ára és a leadás egyszerűsége dönt.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="embedded-demography" aria-labelledby="demografia-title">
+            <div class="section-heading">
+              <p class="kicker">Demográfiai alapozás</p>
+              <h2 id="demografia-title">A kitöltések nyelvi-forrás szerinti bontása, majd két elemzési minta összevetése</h2>
+            </div>
+
+            <div class="demography-intro">
+              <article class="source-card">
+                <div class="source-card-top">
+                  <div>
+                  <p class="kicker">Kiinduló bontás</p>
+                  <h3>Kitöltések száma az eredeti forrás szerint</h3>
+                  </div>
+                  <span class="chart-method-label">CSV aggregáció + Vega-Lite</span>
+                </div>
+                <div id="sourceBars" class="source-plot vega-chart" aria-live="polite"></div>
+              </article>
+
+              <article class="source-card emphasis-card">
+                <p class="kicker">Elemzési csoportosítás</p>
+                <h3>Romániai minta = magyar + román nyelvű kitöltések</h3>
+                <p>
+                  A további demográfiai ábrákban a magyar és román kitöltések egy csoportként szerepelnek.
+                  Az angol nyelvű, hollandiai kitöltések alkotják a holland összehasonlító mintát.
+                </p>
+                <div class="group-counts" id="groupCounts" aria-live="polite"></div>
+              </article>
+            </div>
+
+            <div class="comparison-panel">
+              <div class="comparison-top">
+                <div class="comparison-title-block">
+                  <p class="kicker">Összehasonlíthatóság</p>
+                  <h3>Demográfiai attribútumok dinamikus összevetése</h3>
+                  <span class="chart-method-label">Kategóriaarányok + Cramér V</span>
+                </div>
+                <div class="segmented-control" id="attributeControls" aria-label="Demográfiai attribútum választása"></div>
+              </div>
+
+              <div class="chart-shell">
+                <div id="comparisonChart" class="comparison-chart vega-chart" aria-live="polite"></div>
+              </div>
+
+              <div id="profileCards" class="profile-grid" aria-live="polite"></div>
+              <div id="conclusions" class="conclusion-grid" aria-live="polite"></div>
+            </div>
+          </div>
+
+          <div class="results-heading">
+            <p class="kicker">Eredmények</p>
+            <h2>Elemző vizualizációk a primer adatokból</h2>
+          </div>
+
+          <details class="metric-method-panel">
+            <summary>Indexképzés</summary>
+            <div class="metric-method-content" aria-labelledby="metric-method-title">
+              <div>
+                <p class="kicker">Indexképzés</p>
+                <h3 id="metric-method-title">A skálaalapú dimenziók összeállítása</h3>
+                <p>
+                  Az alábbi csoportosítások ugyanazokkal a nevekkel szerepelnek a pókháló ábrán, a heatmapen,
+                  a hisztogramon, a gyertya diagramon és a klaszterprofilban. Az indexek 1-6-os skálakérdések
+                  átlagából készülnek; a termékspecifikus kérdéseknél a nagy háztartási gépek, személyes IT eszközök és kis eszközök
+                  válaszai külön is szűrhetők.
+                </p>
+              </div>
+              <div id="metricGroupingTable" class="metric-grouping-table" aria-live="polite"></div>
+            </div>
+          </details>
+
+          <div class="primary-dashboard" aria-label="Primer adatok interaktív vizualizációi">
+            <div class="result-question-heading" id="primary-overview">
+              <span>00</span>
+              <h3>Válaszadók általános értékei és fogyasztási szokásai</h3>
+              <p>Az első ábrák a környezeti értékeket, az okostelefon e-hulladékként való kezelését és az edukációs programok iránti nyitottságot mutatják meg országonként.</p>
+            </div>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Oszlopdiagram</p>
+                  <h3>Értékdimenziók összehasonlítása</h3>
+                </div>
+                <span>q01-q04 Likert-átlagok + országösszevetés</span>
+              </div>
+              <div id="primaryValueDimensions" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryValueDimensionsNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Oszlopdiagram</p>
+                  <h3>E-hulladék helyes kezelése: elromlott okostelefon</h3>
+                </div>
+                <span>q05 többválaszos arányok</span>
+              </div>
+              <div id="primaryBrokenPhoneDisposal" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryBrokenPhoneDisposalNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Stacked chart</p>
+                  <h3>Nyitottság az e-hulladék edukációs programokra</h3>
+                </div>
+                <span>q08 megoszlás + országösszevetés</span>
+              </div>
+              <div id="primaryEducationProgram" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryEducationProgramNote"></p>
+            </article>
+
+            <div class="result-question-heading" id="primary-profile-section">
+              <span>01</span>
+              <h3>Milyen fogyasztói profilok és háttértényezők látszanak a két országban?</h3>
+              <p>Az ábrák az attitűdöket, viselkedési indexeket és a végzettség, lakhely, kereset szerepét kapcsolják össze.</p>
+            </div>
+
+            <article class="primary-chart primary-chart-wide profile-switch-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Pókháló / heatmap</p>
+                  <h3>Körforgásos fogyasztói profil mintánként</h3>
+                </div>
+                <span>1-6-os Likert-indexekből képzett átlagprofil + heatmap</span>
+              </div>
+              <div class="chart-view-toggle profile-view-toggle" id="primaryProfileViewToggle" aria-label="Profilábra nézet választása">
+                <button class="active" type="button" data-view="radar">Pókháló</button>
+                <button type="button" data-view="heatmap">Heatmap</button>
+              </div>
+              <div class="radar-toolbar">
+                <label for="primaryRadarProduct">Termékkategória</label>
+                <select id="primaryRadarProduct"></select>
+              </div>
+              <div id="primaryRadarPanel" class="profile-view-panel active">
+                <div id="primaryRadar" class="radar-chart" aria-live="polite"></div>
+                <p class="chart-note" id="primaryRadarNote"></p>
+              </div>
+              <div id="primaryHeatmapPanel" class="profile-view-panel" hidden>
+                <div id="primaryHeatmap" class="vega-chart primary-vega" aria-live="polite"></div>
+                <p class="chart-note" id="primaryHeatmapNote"></p>
+              </div>
+            </article>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Gyertya diagram</p>
+                  <h3>Indexek szórása, mediánja és kvartilisei</h3>
+                </div>
+                <span>Kvartilisek + min-max tartomány</span>
+              </div>
+              <div id="primaryCandles" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryCandlesNote"></p>
+            </article>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Heatmap</p>
+                  <h3>Mely attitűdök járnak együtt a körforgásos döntésekkel?</h3>
+                </div>
+                <span>Pearson r együttjárási mutató</span>
+              </div>
+              <div id="primaryCorrelation" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryCorrelationNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Hisztogram</p>
+                  <h3>Skálaválaszok eloszlása</h3>
+                </div>
+                <span>Likert-sávok + Vega-Lite + attitűdvonal</span>
+              </div>
+              <div id="primaryHistogram" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryHistogramNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Buborék diagram</p>
+                  <h3>Javítási és felelős leadási hajlandóság társadalmi háttér szerint</h3>
+                </div>
+                <span>Aggregált csoportok + bubble plot</span>
+              </div>
+              <div id="primaryBubble" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryBubbleNote"></p>
+            </article>
+
+            <div class="result-question-heading" id="primary-consumption-section">
+              <span>02</span>
+              <h3>Beszerzési és fogyasztási szokások</h3>
+              <p>Ez a rész azt mutatja meg, mennyire jelenik meg a használt termék vásárlása és az alternatív fogyasztási modell a három termékkategóriában.</p>
+            </div>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Stacked oszlopdiagram</p>
+                  <h3>Használt elektronikai termékek vásárlása</h3>
+                </div>
+                <span>q10 igen válaszok + termékkategória-stack</span>
+              </div>
+              <div id="primaryUsedPurchase" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryUsedPurchaseNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Szűrhető oszlopdiagram</p>
+                  <h3>Alternatív fogyasztási szokások</h3>
+                </div>
+                <span>q14 Likert-átlagok + termékkategória-váltó</span>
+              </div>
+              <div id="primaryAlternativeConsumption" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryAlternativeConsumptionNote"></p>
+            </article>
+
+            <div class="result-question-heading" id="primary-repair-section">
+              <span>03</span>
+              <h3>Használat közbeni, javítási döntések</h3>
+              <p>Ez a rész a javítási rutint, az önálló javítást, valamint a javításhoz kapcsolódó akadályokat és motivációkat mutatja be.</p>
+            </div>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Oszlopdiagram</p>
+                  <h3>Javítási hajlandóság termékkategóriánként</h3>
+                </div>
+                <span>q16 Likert-átlagok + országösszevetés</span>
+              </div>
+              <div id="primaryRepairWillingness" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryRepairWillingnessNote"></p>
+            </article>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Oszlopdiagramok</p>
+                  <h3>Akadályok és motivációk együtt olvasva</h3>
+                </div>
+                <span>Többválaszos arányok + nézetváltó</span>
+              </div>
+              <div class="paired-chart-grid">
+                <div class="paired-chart-panel">
+                  <h4>A javítást akadályozó tényezők</h4>
+                  <div class="chart-view-toggle" id="primaryBarrierViewToggle" aria-label="Akadályok ábranézet választása">
+                    <button class="active" type="button" data-view="top">Top nézet</button>
+                    <button type="button" data-view="compare">Országösszevetés</button>
+                  </div>
+                  <div id="primaryBarrierChoice" class="vega-chart primary-vega compact-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="primaryBarrierChoiceNote"></p>
+                </div>
+                <div class="paired-chart-panel">
+                  <h4>A javítást ösztönző tényezők</h4>
+                  <div class="chart-view-toggle" id="primaryMotivationViewToggle" aria-label="Motivációk ábranézet választása">
+                    <button class="active" type="button" data-view="top">Top nézet</button>
+                    <button type="button" data-view="compare">Országösszevetés</button>
+                  </div>
+                  <div id="primaryMotivationChoice" class="vega-chart primary-vega compact-vega" aria-live="polite"></div>
+                  <p class="chart-note" id="primaryMotivationChoiceNote"></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Oszlopdiagram</p>
+                  <h3>Hibátlan és apró hibás eszközök elfogadása</h3>
+                </div>
+                <span>q22-q23 átlag + grouped bar</span>
+              </div>
+              <div id="primaryRepairQuality" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryRepairQualityNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Stacked oszlopdiagram</p>
+                  <h3>Önálló javítási hajlandóság</h3>
+                </div>
+                <span>q21 válaszmegoszlás + 100%-os stacked bar</span>
+              </div>
+              <div id="primarySelfRepair" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primarySelfRepairNote"></p>
+            </article>
+
+            <div class="result-question-heading" id="primary-end-of-life-section">
+              <span>04</span>
+              <h3>Termék életciklus végi döntések</h3>
+              <p>Az ábrák a leadópont-ismeretet, a tényleges leadási utakat és a jövőbeni felelős leadási hajlandóságot kapcsolják össze.</p>
+            </div>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Fánkdiagram</p>
+                  <h3>Tudják-e a válaszadók, hol van a legközelebbi leadópont?</h3>
+                </div>
+                <span>q27 megoszlás + két ország fánkdiagram</span>
+              </div>
+              <div id="primaryDropoffKnowledge" class="vega-chart primary-vega" aria-live="polite"></div>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Oszlopdiagram</p>
+                  <h3>Az eszközök tényleges útja az életciklus végén</h3>
+                </div>
+                <span>Kategóriaarányok + nézetváltó</span>
+              </div>
+              <div class="chart-view-toggle" id="primaryDisposalViewToggle" aria-label="Leadási utak ábranézet választása">
+                <button class="active" type="button" data-view="top">Top nézet</button>
+                <button type="button" data-view="compare">Országösszevetés</button>
+              </div>
+              <div id="primaryDisposalPath" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryDisposalPathNote"></p>
+            </article>
+
+            <article class="primary-chart">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Stacked oszlopdiagram</p>
+                  <h3>Jövőbeni felelős leadási hajlandóság</h3>
+                </div>
+                <span>q30 skálamegoszlás + 100%-os stacked bar</span>
+              </div>
+              <div id="primaryFutureDisposal" class="vega-chart primary-vega" aria-live="polite"></div>
+              <p class="chart-note" id="primaryFutureDisposalNote"></p>
+            </article>
+
+            <div class="result-question-heading" id="primary-clusters-section">
+              <span>05</span>
+              <h3>Milyen fogyasztói csoportok rajzolódnak ki az adatokból?</h3>
+              <p>A klaszterezés feltáró módon mutatja meg, milyen válaszadói mintázatok különülnek el a képzett indexek alapján.</p>
+            </div>
+
+            <article class="primary-chart primary-chart-wide">
+              <div class="chart-heading">
+                <div>
+                  <p class="kicker">Vonaldiagram</p>
+                  <h3>Kialakuló fogyasztói szegmensek</h3>
+                </div>
+                <span>Feltáró modell, nem előre megadott csoportosítás</span>
+              </div>
+              <div id="primaryClusterProfile" class="vega-chart primary-vega" aria-live="polite"></div>
+              <div class="chart-note kmeans-note" id="primaryClusterProfileNote"></div>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="conclusion-section" class="section-band muted-band conclusion-section" aria-labelledby="conclusion-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="kicker">Következtetések</p>
+            <h2 id="conclusion-title">A primer és szekunder adatok közös olvasata</h2>
+          </div>
+
+          <div class="insight-grid">
+            <article>
+              <span>01</span>
+              <h3>Az attitűd és a viselkedés nem feltétlenül jár együtt</h3>
+              <p>A környezeti értékek és a tényleges körforgásos viselkedés között mindkét országban eltérés figyelhető meg. A pozitív attitűd önmagában nem garantálja a fenntartható döntéseket, amelyeket számos külső tényező is befolyásol.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>A hollandiai válaszadók több területen kedvezőbb mintázatot mutatnak</h3>
+              <p>A használt termékek vásárlása, az alternatív fogyasztási modellek elfogadása és az életciklus végi kezelési döntések esetében a hollandiai minta több körforgásos viselkedési elemet mutat. Az eltérések azonban jellemzően fokozatbeliek, nem radikálisak.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>A körforgásos döntéseket elsősorban gyakorlati tényezők befolyásolják</h3>
+              <p>A javítás költsége, az alkatrészek és szolgáltatások elérhetősége, valamint a leadási lehetőségek hozzáférhetősége következetesen fontosabb szerepet játszottak, mint a környezeti motivációk. A viselkedés alakulásában a gyakorlati szempontok kiemelt jelentőségűek.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Az elektronikai eszközök jelentős része nem kerül vissza azonnal a körforgásba</h3>
+              <p>Mindkét országban gyakori az elhasznált készülékek otthoni tárolása, különösen a személyes elektronikai eszközök esetében. Ez arra utal, hogy az e-hulladék jelentős része hosszabb időre a háztartásokban marad.</p>
+            </article>
+            <article>
+              <span>05</span>
+              <h3>Romániában jelentős fejlődési potenciál figyelhető meg</h3>
+              <p>A romániai válaszadók több területen magasabb jövőbeli hajlandóságot mutattak a körforgásos megoldások iránt. Ez arra utal, hogy megfelelő ösztönzők, infrastruktúra és információ rendelkezésre állása mellett a körforgásos viselkedés további erősödése várható.</p>
+            </article>
+          </div>
+
+          <div class="final-message" aria-labelledby="final-message-title">
+            <p class="kicker">Fő következtetés</p>
+            <h2 id="final-message-title">A körforgásos gazdaság megvalósulása nem kizárólag a fogyasztói attitűdökön múlik.</h2>
+            <p>
+              Összességében a körforgásos gazdaság nagymértékben függ a rendszerszintű feltételektől. Míg Hollandiában
+              a fejlettebb intézményi és infrastrukturális háttér lehetővé teszi a körforgásos viselkedés szélesebb körű
+              megvalósulását, addig Romániában a fogyasztói hajlandóság ellenére a gyakorlati megvalósulás korlátozottabb.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Fazakas Boglárka</span>
+      <span>Körforgásos gazdaság az elektronikai iparban</span>
+      <span id="year"></span>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.16.3"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.24.0"></script>
+    <script src="js/demography-altair.js"></script>
+    <script src="charts/primary-radar.js"></script>
+    <script src="charts/primary-heatmap.js"></script>
+    <script src="charts/primary-histogram.js"></script>
+    <script src="charts/primary-bubble.js"></script>
+    <script src="charts/primary-candles.js"></script>
+    <script src="charts/primary-correlation.js"></script>
+    <script src="charts/primary-barriers-motivations.js"></script>
+    <script src="charts/primary-disposal-path.js"></script>
+    <script src="charts/primary-repair-quality.js"></script>
+    <script src="charts/primary-kmeans.js"></script>
+    <script src="charts/secondary-weee-category.js"></script>
+    <script src="charts/secondary-recycling-trend.js"></script>
+    <script src="charts/secondary-recycling-ranking.js"></script>
+    <script src="charts/secondary-eurobarometer.js"></script>
+    <script src="js/config.js?v=20260612-conclusion-3"></script>
+    <script src="js/data-utils.js"></script>
+    <script src="js/demography.js?v=20260612-conclusion-3"></script>
+    <script src="js/primary-processing.js?v=20260612-conclusion-3"></script>
+    <script src="js/primary-overview-charts.js?v=20260612-conclusion-3"></script>
+    <script src="js/primary-profile-charts.js?v=20260612-conclusion-3"></script>
+    <script src="js/primary-social-algorithm-charts.js?v=20260612-conclusion-3"></script>
+    <script src="js/primary-choice-charts.js?v=20260612-conclusion-3"></script>
+    <script src="js/primary-main.js?v=20260612-conclusion-3"></script>
+    <script src="js/secondary-visualizations.js?v=20260612-conclusion-3"></script>
+    <script src="js/app-data.js"></script>
+    <script src="js/canvas-nav.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
