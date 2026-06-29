@@ -43,61 +43,12 @@ function enrichedPrimaryRows(rows) {
       educationScore: educationScores[normalize(row.education)] || null,
       incomeScore: incomeScores[normalize(row.household_income_eur)] || null,
       residenceScore: residenceScores[normalize(row.residence)] || null,
+      cluster: normalize(row.cluster) || "Hiányos adat",
       ...values,
     };
   });
 
-  const clustered = assignKMeansClusters(enriched);
-  return clustered;
-}
-
-function euclideanDistance(a, b) {
-  return Math.sqrt(a.reduce((sum, value, index) => sum + (value - b[index]) ** 2, 0));
-}
-
-function assignKMeansClusters(rows) {
-  // ALGORITMUS: KMeans klaszterezés.
-  // Kapcsolódó ábra: "Válaszadói szegmensek átlagos mintázata".
-  // Bemenet: a fenti indexképzésből származó többdimenziós válaszadói profil.
-  // Fontos: ez feltáró modell; a klaszterek címkéi utólagos értelmezések.
-  // KMeans: hasonló válaszadói profilokat keres a skálaindexek alapján.
-  // A klasztercímkék utólagos értelmezések, nem előre megadott csoportok.
-  const features = ["attitude", "rentShare", "durability", "repair", "fullRepair", "imperfectRepair", "futureDisposal"];
-  const complete = rows
-    .map((row, index) => ({ row, index, vector: features.map((field) => row[field]) }))
-    .filter((item) => item.vector.every((value) => Number.isFinite(value)));
-
-  if (complete.length < 3) {
-    return rows.map((row) => ({ ...row, cluster: "Kevés adat" }));
-  }
-
-  const k = 3;
-  let centroids = [
-    complete[0].vector,
-    complete[Math.floor(complete.length / 2)].vector,
-    complete[complete.length - 1].vector,
-  ].map((vector) => [...vector]);
-  let assignments = new Array(complete.length).fill(0);
-
-  for (let iteration = 0; iteration < 35; iteration += 1) {
-    assignments = complete.map((item) => {
-      const distances = centroids.map((centroid) => euclideanDistance(item.vector, centroid));
-      return distances.indexOf(Math.min(...distances));
-    });
-
-    centroids = centroids.map((centroid, clusterIndex) => {
-      const members = complete.filter((_, index) => assignments[index] === clusterIndex);
-      if (!members.length) return centroid;
-      return centroid.map((_, featureIndex) => mean(members.map((member) => member.vector[featureIndex])));
-    });
-  }
-
-  const clusterScores = centroids.map((centroid, index) => ({ index, score: mean(centroid) || 0 })).sort((a, b) => a.score - b.score);
-  const labels = ["Óvatos lineáris", "Átmeneti pragmatikus", "Körforgásos nyitott"];
-  const labelByCluster = Object.fromEntries(clusterScores.map((cluster, index) => [cluster.index, labels[index]]));
-  const clusterByOriginalIndex = Object.fromEntries(complete.map((item, index) => [item.index, labelByCluster[assignments[index]]]));
-
-  return rows.map((row, index) => ({ ...row, cluster: clusterByOriginalIndex[index] || "Hiányos adat" }));
+  return enriched;
 }
 
 function primaryBaseSpec(values, height = 340) {

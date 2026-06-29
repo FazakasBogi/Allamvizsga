@@ -15,7 +15,9 @@
      Ide tartozik az előzetes adatjavítás, mezőnevek egységesítése és a Eurobarometer CSV előállítása.
   2. Böngészős JS aggregáció/indexképzés: itt készülnek a mintán belüli arányok, átlagok,
      Likert-indexek, kvartilisek és a vizualizációhoz szükséges köztes táblák.
-  3. Egyéb algoritmusok: Cramér V, Pearson r és KMeans itt, JavaScriptben számolódik.
+  3. Egyéb algoritmusok: a Cramér V és a Pearson r JavaScriptben számolódik.
+     A KMeans klaszterezést a cluster_analysis.py végzi Scikit-learnnel; az eredmény
+     a master_dataset_clustered.csv cluster oszlopából kerül a weboldalra.
   4. Vega-Lite specifikációk: a legtöbb ábra mark/encoding/transform objektumként készül,
      majd a vegaEmbed rajzolja ki. Kivétel: a pókháló ábra és a nyitó animáció saját SVG/canvas rajzolás.
 */
@@ -104,14 +106,14 @@ const secondaryNotes = {
   eurobarometerQb8Share: document.querySelector("#eurobarometerQb8ShareNote"),
 };
 
-const DATA_PATH = "../data/cleaned/master_dataset_harmonized3.csv";
+const DATA_PATH = "../data/cleaned/master_dataset_clustered.csv";
 const WEEE_DATA_PATH = "../data/weee_data.csv";
 const WEEE_RECYCLING_PATH = "../data/weee_recycling rate.csv";
 const EUROBAROMETER_PATH = "../data/cleaned/eurobarometer_sp550_ro_nl_eu.csv";
 const DATA_PATHS = [
   DATA_PATH,
-  "data/cleaned/master_dataset_harmonized3.csv",
-  "./data/cleaned/master_dataset_harmonized3.csv",
+  "data/cleaned/master_dataset_clustered.csv",
+  "./data/cleaned/master_dataset_clustered.csv",
 ];
 const WEEE_DATA_PATHS = [
   WEEE_DATA_PATH,
@@ -132,7 +134,7 @@ const EUROBAROMETER_PATHS = [
 ];
 
 // ADATFORRÁSOK:
-// - DATA_PATH: Python/Pandas által tisztított primer kérdőíves adatbázis.
+// - DATA_PATH: Python/Pandas által tisztított, Scikit-learnnel klaszterezett primer adatbázis.
 // - WEEE_DATA_PATH és WEEE_RECYCLING_PATH: Eurostat/WEEE másodlagos CSV-k.
 // - EUROBAROMETER_PATH: a két PDF alapján létrehozott, tisztított Eurobarometer CSV.
 const GROUPS = ["Romániai minta", "Holland minta"];

@@ -1,7 +1,7 @@
 function renderPrimaryVisualizations(rows) {
   // PRIMER VIZUALIZÁCIÓS PIPELINE:
   // 1. tisztított CSV sorok gazdagítása és indexképzés,
-  // 2. KMeans klasztercímkék hozzárendelése,
+  // 2. a Scikit-learnnel előállított KMeans-klasztercímkék betöltése,
   // 3. minden primer ábra renderelése a fenti aggregációkból.
   const primaryRows = enrichedPrimaryRows(rows);
   renderMetricGroupingTable();
