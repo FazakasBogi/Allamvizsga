@@ -42,6 +42,10 @@
       return;
     }
 
+    // A demográfiai fülek ugyanazt a konténert rajzolják újra.
+    // Az előző SVG eltávolítása biztosítja, hogy a letöltés mindig
+    // az aktuálisan kiválasztott attribútum ábráját találja meg.
+    element.replaceChildren();
     window.vegaEmbed(element, spec, embedOptions);
   }
 

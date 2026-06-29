@@ -154,11 +154,13 @@ function sanitizeFileName(value) {
 }
 
 function chartTitleFor(scope) {
+  const chart = visibleChartIn(scope);
+  const dynamicTitle = chart?.dataset.exportTitle;
   const panelTitleNode = scope.querySelector("h4")?.cloneNode(true);
   panelTitleNode?.querySelectorAll("button").forEach((item) => item.remove());
   const panelTitle = panelTitleNode?.textContent;
   const articleTitle = scope.closest(".primary-chart, .source-card, .comparison-panel")?.querySelector(".chart-heading h3, h3")?.textContent;
-  return normalize(panelTitle || articleTitle || "Adatvizualizáció");
+  return normalize(dynamicTitle || panelTitle || articleTitle || "Adatvizualizáció");
 }
 
 function chartMethodFor(scope) {

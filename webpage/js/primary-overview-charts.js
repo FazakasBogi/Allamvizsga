@@ -31,7 +31,8 @@ function renderPrimaryValueDimensions(rows) {
     ...primaryBaseSpec(values, 330),
     mark: { type: "bar", cornerRadiusEnd: 4 },
     encoding: {
-      x: { field: "dimenzio", type: "nominal", title: null, sort: overviewValueDimensions.map((item) => item.label), axis: { labelAngle: 0, labelLimit: 135 } },
+      x: { field: "dimenzio", type: "nominal", title: null, sort: overviewValueDimensions.map((item) => item.label), 
+        axis: { labelAngle: 0, labelLimit: 135 } },
       y: { field: "atlag", type: "quantitative", title: "Átlagos érték (1-6)", scale: { domain: [0, 6] } },
       xOffset: { field: "minta" },
       color: { field: "minta", type: "nominal", title: null, scale: { domain: GROUPS, range: GROUPS.map((group) => GROUP_COLORS[group]) } },

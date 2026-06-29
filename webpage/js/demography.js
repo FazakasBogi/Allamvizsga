@@ -84,6 +84,7 @@ function renderComparisonChart(rows) {
     chartData.percentLabels[group] = chartData.percentages[group].map(formatPercent);
   });
 
+  comparisonChart.dataset.exportTitle = `Demográfiai összehasonlítás – ${attribute.label}`;
   window.demographyFigures.renderComparisonChart(comparisonChart, chartData);
 }
 
